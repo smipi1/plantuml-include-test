@@ -22,7 +22,7 @@ System(artifact, "Artifact", $ARTIFACT)
 System_Ext(env, "Environment", $ENVIRONMENT, $tags="environment")
 System(rmeasure, "Response Measure", $RESPONSE_MEASURE, $tags="measure", $sprite="ma_alarm")
 
-Rel_R(source, artifact, $STIMULUS, "Stimulus (changed)")
+Rel_R(source, artifact, $STIMULUS, "Stimulus")
 Rel_R(artifact, rmeasure, $RESPONSE, "Response")
 
 env -[hidden]up- artifact
