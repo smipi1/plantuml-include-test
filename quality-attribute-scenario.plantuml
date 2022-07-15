@@ -1,0 +1,32 @@
+@startuml
+
+!$STIMULUS="Describe stimulus"
+!$SOURCE="Describe source of stimulus"
+!$RESPONSE="Describe response"
+!$RESPONSE_MEASURE="Describe response measure"
+!$ENVIRONMENT="Describe environment"
+!$ARTIFACT="Describe artifact"
+
+!include <material/alarm>
+!include <material/gesture_tap>
+!include <C4/C4_Container>
+
+' skinparam nodesep 50
+skinparam ranksep 1
+
+AddElementTag("measure", $shape=RoundedBoxShape())
+UpdateElementStyle("external_system", $fontColor=black, $bgColor=transparent, $borderColor=transparent)
+
+System(source, "Source", $SOURCE, $tags="measure", $sprite="ma_gesture_tap")
+System(artifact, "Artifact", $ARTIFACT)
+System_Ext(env, "Environment", $ENVIRONMENT, $tags="environment")
+System(rmeasure, "Response Measure", $RESPONSE_MEASURE, $tags="measure", $sprite="ma_alarm")
+
+Rel_R(source, artifact, $STIMULUS, "Stimulus")
+Rel_R(artifact, rmeasure, $RESPONSE, "Response")
+
+env -[hidden]up- artifact
+
+HIDE_STEREOTYPE()
+
+@enduml
